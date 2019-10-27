@@ -105,3 +105,57 @@ def transA(line):
             aVal =int(line[1:])
         bVal = bin(aVal)[2:].zfill(16)
         return bVal
+
+def transC(line):
+    line = removeExtras(line)
+    temp = line.split("=")
+    dCode = Destination.get(temp[0], "destFail")
+    temp = temp[1].split(";")
+    cCode = comp.get(temp[0], "compFail")
+    jCode = jump.get(temp[1], "jumpFail")
+    return cCode, dCode, jCode
+
+def translate(line):
+    if line[0] == "@":
+        return transA(line)
+    else:
+        codes = transC(line)
+        return "111" + codes[0] + codes[1] + codes[2]
+
+def passA();
+    infile = open(root + ".asm")
+    outfile = open(root + ".tmp", "w")
+
+    lineNum = 0
+    for line in infile:
+        stLine = line.strip(line)
+        if stLine != "":
+            if stLine[0] = "(":
+                label = stLine[1:-1]
+                tablesymb[label] = lineNum
+                stLine = ""
+            else:
+                lineNum += 1
+                outfile.write(stLine + "\n")
+
+    infile.close()
+    outfile.close()
+
+
+def Assemble():
+    infile = open(root + ".tmp")
+    outfile = open(root + ".hack", "w")
+
+    for line in infile:
+        trLine = translate(line)
+        outfile.write(trLine + "\n")
+
+    infile.close()
+    outfile.close()
+    os.remove(root + ".tmp")
+
+
+
+ # Now to run the actual program
+passA()
+Assemble()

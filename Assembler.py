@@ -122,7 +122,7 @@ def translate(line):
         codes = transC(line)
         return "111" + codes[0] + codes[1] + codes[2]
 
-def passA();
+def passA():
     infile = open(root + ".asm")
     outfile = open(root + ".tmp", "w")
 
@@ -130,7 +130,7 @@ def passA();
     for line in infile:
         stLine = line.strip(line)
         if stLine != "":
-            if stLine[0] = "(":
+            if stLine[0] == "(":
                 label = stLine[1:-1]
                 tablesymb[label] = lineNum
                 stLine = ""

@@ -88,7 +88,7 @@ for i in range(0,16):
   table[label] = i
 
 
-nextVarStorage = 16    # memory cursor for variable storage
+nextVarStorage = 17    # memory cursor for variable storage
 root = str(input())     # file that is inputted by the user
 lastSlash = 0
 

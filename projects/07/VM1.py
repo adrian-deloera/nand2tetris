@@ -335,7 +335,7 @@ class ParseLines:
     
 def main():
   root = str(input())
-  rootname = root[:-3]
+  rootname = root.strip(".vm")
   parse = ParseLines(root)
   writer = Translator(rootname + ".asm")
   
